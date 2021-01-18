@@ -55,9 +55,9 @@ def modify_contrast(image, prop):
     modified_contrast = exposure.rescale_intensity(image, in_range=(v_min, v_max))
     return modified_contrast
 
-def corrections(image, gamma_correction=0, gamma, gain,
-               log_correction=0, sigmoid_correction=0            
-               ):
+def corrections(image, gamma, gain, gamma_correction=0, 
+               log_correction=0, sigmoid_correction=0):
+    
     if(gamma_correction):
         image = exposure.adjust_gamma(image, gamma, gain)
     
@@ -120,7 +120,7 @@ def flip(image, horizontal=0, vertical=0):
     return flipped_image
 
 
-def add_blur(image,size=(11, 11, 1))
+def add_blur(image,size=(11, 11, 1)):
     blured_image = ndimage.uniform_filter(image, size)
     return blured_image
 
@@ -137,6 +137,6 @@ def histogram_equalization(image, clahe=0, clip_limit=0.01,
 
 
 def histogram_match(image,reference,multichannel=False):
-    match = exposure.match_histograms(image, reference, *, multichannel=False)
+    match = exposure.match_histograms(image, reference, multichannel=False)
     return match
     
