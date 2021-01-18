@@ -110,7 +110,6 @@ def add_noise(noise_typ,image):
         noisy = image + image * gauss
         return noisy
 
-    
 def flip(image, horizontal=0, vertical=0):
     if(horizonatal):
         flipped_image = image[:, ::-1]
@@ -119,11 +118,9 @@ def flip(image, horizontal=0, vertical=0):
     
     return flipped_image
 
-
 def add_blur(image,size=(11, 11, 1)):
     blured_image = ndimage.uniform_filter(image, size)
     return blured_image
-
 
 def histogram_equalization(image, clahe=0, clip_limit=0.01,
                            nbins=256, hist_equal =0, mask=None):
@@ -135,8 +132,6 @@ def histogram_equalization(image, clahe=0, clip_limit=0.01,
         equalized_image = equexposure.equalize_hist(image, nbins, mask)
     return equalized_image
 
-
 def histogram_match(image,reference,multichannel=False):
     match = exposure.match_histograms(image, reference, multichannel=False)
-    return match
-    
+    return match    
